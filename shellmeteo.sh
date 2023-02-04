@@ -154,14 +154,15 @@ echo $@
 			shift;;
 		esac
 	done
-	echo "les reste des argument $1"
+	
 	echo $mindate
 	echo $maxdate
-	echo "le nombre d erreur $erreur"
+	
 	if (( $zone > 1 )) ; then
 		echo "il y a trop d'option zone"
 		erreur=$(( erreur + 1 ))
 	fi
+	
 	if (( $tri > 1 )) ; then
 		echo "il y a trop d'option de tri"
 		erreur=$(( erreur + 1 ))
@@ -182,6 +183,9 @@ if (( $help == 1 )) ; then
 	exit
 fi
 
+	if (( $erreur > 3 )) ; then
+		exit
+	fi
 
 #egrep '2010-05-10' $file > meteo_filtered_data_v1_fil.csv
 #partie où l'option d est activé
